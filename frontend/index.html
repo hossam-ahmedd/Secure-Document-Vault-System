@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Vault | Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="logo-box">🔐</div>
+
+      <h1>Secure Vault</h1>
+      <p class="subtitle">Login to access your encrypted document vault.</p>
+
+      <form id="loginForm">
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="Enter your email" required />
+
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password" required />
+        <div id="mfaBox" style="display: none;">
+          <label>OTP Code</label>
+          <input type="text" id="otpCode" placeholder="Enter 6-digit OTP" />
+        </div>
+        <div id="loginMessage"></div>
+
+        <button type="submit" class="primary-btn">Login</button>
+      </form>
+
+      <p class="switch-text">
+        Don’t have an account?
+        <a href="register.html">Create account</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

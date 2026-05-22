@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Vault | Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand">🔐 Secure Vault</div>
+
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="admin.html" id="adminLink">Admin</a>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="tag">Secure Document Vault</p>
+        <h1 id="welcomeText">Welcome</h1>
+        <p>
+          Upload, encrypt, hash, verify, download, and manage your documents securely.
+        </p>
+      </div>
+
+      <div class="hero-icon">🛡️</div>
+    </section>
+
+    <section class="cards-grid">
+      <div class="info-card">
+        <h3>🔐 Encryption</h3>
+        <p>Documents are encrypted before being saved on the server.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>🧾 SHA-256 Hash</h3>
+        <p>Each uploaded document has a hash for integrity checking.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>🎟️ JWT Auth</h3>
+        <p>Protected routes require a valid JWT token.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>👤 Role</h3>
+        <p>Your role: <strong id="userRole">user</strong></p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Multi-Factor Authentication</h2>
+      <p class="muted">
+        Enable OTP-based MFA using Google Authenticator, Microsoft Authenticator, or Authy.
+      </p>
+
+      <div id="mfaStatusBox" class="message-success" style="display: none;">
+        MFA is currently enabled on your account.
+      </div>
+
+      <button id="setupMfaBtn" class="secondary-btn">Setup MFA</button>
+
+      <button id="disableMfaBtn" class="secondary-btn danger" style="display: none;">
+        Disable MFA
+      </button>
+
+      <div id="mfaSetupBox" style="display: none; margin-top: 20px;">
+        <p class="muted">Scan this QR code using your Authenticator app:</p>
+
+        <img
+          id="mfaQrCode"
+          style="max-width: 220px; background: white; padding: 12px; border-radius: 16px;"
+        />
+
+        <label style="margin-top: 15px;">Enter OTP Code</label>
+        <input type="text" id="mfaToken" placeholder="Enter 6-digit OTP" />
+
+        <button id="enableMfaBtn" class="primary-btn" style="margin-top: 12px;">
+          Enable MFA
+        </button>
+      </div>
+
+      <div id="disableMfaBox" style="display: none; margin-top: 20px;">
+        <label>Enter OTP Code to disable MFA</label>
+        <input type="text" id="disableMfaToken" placeholder="Enter 6-digit OTP" />
+
+        <button id="confirmDisableMfaBtn" class="primary-btn" style="margin-top: 12px;">
+          Confirm Disable MFA
+        </button>
+      </div>
+
+      <div id="mfaMessage"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Upload Document</h2>
+      <p class="muted">Choose a file to encrypt and store securely.</p>
+
+      <form id="uploadForm" class="upload-box">
+        <input type="file" id="fileInput" required />
+        <button type="submit" class="primary-btn">Upload Securely</button>
+      </form>
+
+      <div id="uploadMessage"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <h2>My Documents</h2>
+          <p class="muted">View, verify, download, or delete uploaded files.</p>
+        </div>
+
+        <button id="refreshDocsBtn" class="secondary-btn">Refresh</button>
+      </div>
+
+      <div id="documentsMessage"></div>
+      <div id="documentsList" class="documents-grid"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
